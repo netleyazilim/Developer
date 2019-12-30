@@ -1,3 +1,6 @@
+/// Bazı hata kodları için incelenmesinde yarar olacak GİB kaynaklı doküman:
+/// visit https://www.gib.gov.tr/node/102183/pdf
+
 switch (TRAStatusCode)
 {
     case 0: return "Internal.Netle.STate.0.ZARF OLUSTURULDU";

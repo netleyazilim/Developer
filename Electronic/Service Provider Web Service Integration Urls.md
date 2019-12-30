@@ -21,14 +21,14 @@ Gelir İdaresi Başkanlığı'na dahil olan özel entegratörlerine https://ebel
 ## Entegrasyon adresleri ve Canlı/Test ortamlar
 |Barındırma Ortamı|Modül|Ortam|Url
 |---|---|---|---|
-|IBM|e-invoice |TEST|https://efaturatest.seriltd.com.tr/entegrasyon10/EFaturaEntegrasyonu.asmx
+|IBM|e-invoice|TEST|https://efaturatest.seriltd.com.tr/entegrasyon10/EFaturaEntegrasyonu.asmx
 |IBM|e-archive|TEST|https://efaturatest.seriltd.com.tr/EArcWebService/EArcIntegration10.asmx
 |IBM|e-invoice|PROD|https://efatura.seriltd.com.tr/entegrasyon10/EFaturaEntegrasyonu.asmx
 |IBM|e-archive|PROD|https://efatura.seriltd.com.tr/EArcWebService/EArcIntegration10.asmx
-|IBM|(CommonWS) e-invoice, e-archive, e-dispatch, e-ticket, e-smm, e-mm|WebService|https://efatura.seriltd.com.tr/CommonInvoice.Web.Service/Integration10.asmx
-|IBM|e-ledger|WebService|https://efatura.seriltd.com.tr/eledgerintegration/integration10.asmx
-|Türk Telekom|PROD|(CommonWS) e-invoice, e-archive, e-dispatch, e-ticket, e-smm, e-mm|WebService|https://efaturaent.turktelekom.com.tr:10443/CommonInvoice.Web.Service/Integration10.asmx
-|Türk Telekom|TEST|(CommonWS) e-invoice, e-archive, e-dispatch, e-ticket, e-smm, e-mm|WebService|http://efaturatest.turktelekom.com.tr/CommonInvoice.Web.Service/Integration10.asmx
+|IBM|(CommonWS) e-invoice, e-archive, e-dispatch, e-ticket, e-smm, e-mm|PROD|https://efatura.seriltd.com.tr/CommonInvoice.Web.Service/Integration10.asmx
+|IBM|e-ledger|PROD|https://efatura.seriltd.com.tr/eledgerintegration/integration10.asmx
+|Türk Telekom|PROD|(CommonWS) e-invoice, e-archive, e-dispatch, e-ticket, e-smm, e-mm|https://efaturaent.turktelekom.com.tr:10443/CommonInvoice.Web.Service/Integration10.asmx
+|Türk Telekom|TEST|(CommonWS) e-invoice, e-archive, e-dispatch, e-ticket, e-smm, e-mm|http://efaturatest.turktelekom.com.tr/CommonInvoice.Web.Service/Integration10.asmx
 |Inposia|KSG|PROD|https://e-inposia.com/KSG.Web.Service/KSGIntegration10.asmx
 |Inposia|(CommonWS)e-invoice, e-archive, e-dispatch, e-ticket, e-smm, e-mm|PROD|https://e-inposia.com/commonInvoice.web.service/integration10.asmx
 |Inposia|e-ledger|PROD|https://e-inposia.com/eledgerIntegration/Integration10.asmx

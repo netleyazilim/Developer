@@ -5,8 +5,8 @@ Türkiye'deki GİB sistemine dahil olan ve hizmet veren tüm entegratör çözü
 Gelir İdaresi Başkanlığı'na dahil olan özel entegratörlerine https://ebelge.gib.gov.tr/efaturaozelentegratorlerlistesi.html adresinden erişim yapılabilir.
 
 ## Notlar
-- Barındırma ortamı 'Netle' olan sistemler iş ortaklarına özel geliştirme sürecine katkı sağlaması için tasarlanmıştır.
-- Diğer entegratörlere ilişkin (Protel, Oytek ve Erciyes) hizmet veren web servis adresleri ilgili özel entegratörlerin destek birimleri tarafından sağlanmaktadır.
+- Barındırma ortamı 'Netle' olan sistemler iş ortaklarına özel geliştirme sürecine katkı sağlaması için tasarlanmıştır. Farklı amaçlar için ürün geliştirilmesi önerilmemektedir.
+- Diğer entegratörlere ilişkin (Protel, Oytek ve Erciyes) web servis adresler, kullanıcıları ve şifreleri ise ilgili özel entegratörlerin destek birimleri tarafından sağlanmaktadır.
 
 ## Modüller
 - e-fatura 

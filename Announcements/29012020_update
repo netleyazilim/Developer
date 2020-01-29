@@ -1,0 +1,16 @@
+Sistem üzerinde yapılan incelemelerde performansa dayalı çalışmalar sonucu yapmış olduğumuz web servis güncelleme maddelerimiz 
+aşağıdaki gibidir;
+
+1- Dökuman arama yöntemlerinde başlangıç ve bitiş tarih aralıkları maksimum 45 gün olacak şekilde güncellenmiştir. 
+Arama parametrelerinizi bu değere göre revize etmenizi öneririz.
+Aralıkların 45 gün üzerinde tutulması durumunda web servisten uyarı dönülecektir.
+Bu uyarıların tekrarı durumunda sistem bir süre sonra hesapları kilitleyecektir.
+
+2- e-Arşiv Fatura gönderimi sırasında süreç iyileştirmesi adına e-Arşiv Faturalar kuyruğa alınmaya başlanmıştır. 
+Fatura gönderiminin hemen sonrasında tekil/toplu bir sorgulama yapmak için minumum 1 dakika olacak şekilde 
+bir bekleme yapılması gerekmektedir. Tarafınızdan bu kontrollerin yapılması rica olunur.
+Kuyruğa alınan e-arşiv faturanın hemen sorgulanması durumunda aşağıdaki uyarı* alınacaktır ve bu bir hata değildir,
+belgenin sistem tarafından kuyruğa alındığının göstergesidir.
+
+  *10014:e-Belge için erişim hatası. | Durum : e-belge imzalama
+  *10014:e-Belge için erişim hatası. | Durum : e-belge yasal kayıt saklama 

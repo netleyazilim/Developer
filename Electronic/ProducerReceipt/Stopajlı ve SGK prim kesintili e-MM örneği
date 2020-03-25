@@ -1,0 +1,81 @@
+// stopajlı ve SGK prim kesintili e-MM örneği
+
+var nef = new NetleEFatura();
+nef.GUID = Guid.NewGuid().ToString();
+nef.No = "NMM2018000000082";
+nef.Aciklama = "Testnef";
+nef.EkAciklamalar = new string[] { "Aciklama 2", "Aciklama 3", "Aciklama 4" };
+nef.DuzenlenmeTarihi = DateTime.Today;
+nef.DovizTipi = "TRY";
+
+///tamamlayıcı bilgiler
+
+var tedarikci = new Tedarikci();
+tedarikci.FirmaAdi = "AAA Anonim Şirketi";
+tedarikci.Sokak = "Papatya Caddesi Yasemin Sokak";
+tedarikci.BinaAdi = "Manolya Apartmanı";
+tedarikci.KapiNo = "21";
+tedarikci.IlceSemt = "Beşiktaş";
+tedarikci.Il = "İstanbul";
+tedarikci.Ulke = "Türkiye";
+tedarikci.PostaKodu = "34100";
+tedarikci.VergiNoTCKimlikNo = "1234567801";
+tedarikci.VergiDairesi = "Büyük Mükellefler";
+tedarikci.Telefon = "(212) 925 5151";
+tedarikci.Fax = "(212) 925 5050";
+tedarikci.Eposta = "aa@aaa.com.tr";
+tedarikci.WebAdresi = "http://www.aaa.com.tr";
+nef.Tedarikci = tedarikci;
+
+var musteri = new Musteri();
+musteri.FirmaAdi = "Ahmet Tekin";
+musteri.VergiNoTCKimlikNo = "98765432101";            
+musteri.Sokak = "Kültür Mahallesi";
+musteri.IlceSemt = "Konak";
+musteri.Il = "İzmir";
+musteri.Ulke = "Türkiye";            
+musteri.Telefon = "(232) 444 12 34";
+musteri.Fax = "(232) 444 12 30";
+musteri.Eposta = "bb@bbb.com.tr";
+musteri.WebAdresi = "http://www.bbb.com.tr";            
+nef.Musteri = musteri;
+
+var faturaKalemleri = new List<FaturaKalemi>();
+faturaKalemleri.Add(
+    new FaturaKalemi()
+    {
+        StokAdi = "SÜT",
+        Birim = "LTR",
+        DovizTipi = "TRY",
+        BirimFiyat = 2,
+        Miktar = 100,
+        ToplamTutar = 200
+    });
+nef.FaturaKalemleri = faturaKalemleri.ToArray();
+
+///diğer tamamlayıcı bilgiler
+
+var vergiList = new List<Vergi>();
+vergiList.Add(
+    new Vergi()
+    {
+        Tur = TaxCodeContentType.SGKPRIM,
+        Oran = 1,
+        Matrah = 200,
+        Tutar = 2
+    });
+
+vergiList.Add(
+    new Vergi()
+    {
+        Tur = TaxCodeContentType.STOPAJ,
+        Oran = 2,
+        Matrah = 200,
+        Tutar = 4
+    });
+nef.Vergiler = vergiList.ToArray();
+
+nef.ToplamTutar = 200;
+nef.VergilerHaricTutar = 194;
+nef.VergilerDahilTutar = 200;
+nef.OdenecekToplamTutar = 194;

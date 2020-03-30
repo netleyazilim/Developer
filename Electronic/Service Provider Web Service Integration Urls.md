@@ -25,6 +25,7 @@ Gelir İdaresi Başkanlığı'na dahil olan özel entegratörlerine https://ebel
 |IBM|e-archive|TEST|https://efaturatest.seriltd.com.tr/EArcWebService/EArcIntegration10.asmx
 |IBM|e-invoice|PROD|https://efatura.seriltd.com.tr/entegrasyon10/EFaturaEntegrasyonu.asmx
 |IBM|e-archive|PROD|https://efatura.seriltd.com.tr/EArcWebService/EArcIntegration10.asmx
+|IBM|(CommonWS) e-invoice, e-archive, e-dispatch, e-ticket, e-smm, e-mm|TEST|https://efaturatest.seriltd.com.tr/CommonInvoice.Web.Service/Integration10.asmx
 |IBM|(CommonWS) e-invoice, e-archive, e-dispatch, e-ticket, e-smm, e-mm|PROD|https://efatura.seriltd.com.tr/CommonInvoice.Web.Service/Integration10.asmx
 |IBM|e-ledger|PROD|https://efatura.seriltd.com.tr/eledgerintegration/integration10.asmx
 |Türk Telekom|(CommonWS) e-invoice, e-archive, e-dispatch, e-ticket, e-smm, e-mm|PROD|https://efaturaent.turktelekom.com.tr:10443/CommonInvoice.Web.Service/Integration10.asmx

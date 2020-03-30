@@ -31,6 +31,7 @@ Gelir İdaresi Başkanlığı'na dahil olan özel entegratörlerine https://ebel
 |Türk Telekom|(CommonWS) e-invoice, e-archive, e-dispatch, e-ticket, e-smm, e-mm|TEST|http://efaturatest.turktelekom.com.tr/CommonInvoice.Web.Service/Integration10.asmx
 |Inposia|KSG|PROD|https://e-inposia.com/KSG.Web.Service/KSGIntegration10.asmx
 |Inposia|(CommonWS)e-invoice, e-archive, e-dispatch, e-ticket, e-smm, e-mm|PROD|https://e-inposia.com/commonInvoice.web.service/integration10.asmx
+|Inposia|(CommonWS)e-invoice, e-archive, e-dispatch, e-ticket, e-smm, e-mm|TEST|https://efaturatest.inposia.com.tr/commonInvoice.web.service/integration10.asmx
 |Inposia|e-ledger|PROD|https://e-inposia.com/eledgerIntegration/Integration10.asmx
 |Netle|emutabakat (ereconciliation)|PROD|https://emutabakat.netle.com.tr/CommonWebService/Reconciliation10.asmx
 |Netle|emutabakat (ereconciliation)|TEST|https://payment.netle.com.tr/CommonInvoice.Web.Service/reconciliation10.asmx

@@ -1,4 +1,4 @@
-# http://www.aade.gr/myDATA/invoice/v1.0 | InvoiceType
+#Invoice Type
 |Code|Description
 |---|---
 |1.1|Sales Invoice

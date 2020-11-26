@@ -1,9 +1,6 @@
 # CountryType
 |Code
 |---
-# CountryType
-|Code
-|---
 |AD
 |AE
 |AF

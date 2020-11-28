@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<nd:InvoicesDoc xmlns:nic="https://www.aade.gr/myDATA/incomeClassificaton/v1.0" xmlns:nec="https://www.aade.gr/myDATA/expensesClassificaton/v1.0" xmlns:nd="http://www.aade.gr/myDATA/invoice/v1.0">
+<nd:InvoicesDoc xmlns:nic="https://www.aade.gr/myDATA/incomeClassificaton/v1.0" 
+	xmlns:nec="https://www.aade.gr/myDATA/expensesClassificaton/v1.0" 
+	xmlns:nd="http://www.aade.gr/myDATA/invoice/v1.0">
 	<nd:invoice>
 		<nd:counterpart>
 			<nd:vatNumber>GHU610622FN9</nd:vatNumber>

@@ -14,3 +14,6 @@ Ulaştırma Elektronik Takip ve Denetim Sistemi (U-ETDS), Kanun ve bu Yönetmeli
 
 ## Çözüme İlişkin Bilgileri
 Çözüme ilişkin daha fazla bilgi için http://www.netle.com.tr/e-donusum-cozumleri/u-etds-ulastirma-elektronik-takip-ve-denetim-sistemi-cozumu adresini ziyaret edebilirsiniz.
+
+## Web Portal - Aktarım Dosyası 
+Netle Yazılım U-ETDS web portal çözümlerinde veri aktarımı için kullanılan örnek Excel dosyası için https://github.com/netleyazilim/Developer/raw/master/Electronic/U-ETDS/nta_karayollari_03.xlsx adresinde yer alan dosyayı indirebilirsiniz.

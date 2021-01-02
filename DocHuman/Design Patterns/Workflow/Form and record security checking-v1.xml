@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-16"?>
+<ClipboardData Version="1.0" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:dfb="clr-namespace:DFS.Form.Bll;assembly=DFS.Form.Bll" xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ClipboardData.Data>
+        <scg:List x:TypeArguments="x:Object" Capacity="1">
+            <p:Sequence x:Name="__ReferenceID0" DisplayName="Form and Record Security Check-v1" VirtualizedContainerService.HintSize="200,49">
+                <p:Sequence.Variables>
+                    <p:Variable x:TypeArguments="dfb:FormSecurity" Name="userright" />
+                </p:Sequence.Variables>
+                <WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                </WorkflowViewStateService.ViewState>
+                <p:Assign DisplayName="get user right" VirtualizedContainerService.HintSize="464,60">
+                    <p:Assign.To>
+                        <p:OutArgument x:TypeArguments="dfb:FormSecurity">[userRight]</p:OutArgument>
+                    </p:Assign.To>
+                    <p:Assign.Value>
+                        <p:InArgument x:TypeArguments="dfb:FormSecurity">[DFS.Form.BLL.UserRightManagement.GetUserFormRights(DFSUser,convert.toint32(formid) )]</p:InArgument>
+                    </p:Assign.Value>
+                </p:Assign>
+                <p:If Condition="[userRight.viewright = false or userright.InsertRight = false]" DisplayName="check the form view and insert rights" VirtualizedContainerService.HintSize="464,204">
+                    <p:If.Then>
+                        <p:Throw Exception="[new exception(&quot;Kayıt görme ya da yeni kayıt yetkisi tanımsız&quot;)]" VirtualizedContainerService.HintSize="200,22" />
+                    </p:If.Then>
+                </p:If>
+                <p:If Condition="[not UserRightManagement.IsAllowedToViewRecord(DFSUser,convert.toint32(formId),Convert.toint32(id))]" DisplayName="check row based security" VirtualizedContainerService.HintSize="464,204">
+                    <p:If.Then>
+                        <p:Throw Exception="[new exception(&quot;Kaynak dokümana erişim yetkisi tanımsız. Kayıt No : &quot; + id.tostring)]" VirtualizedContainerService.HintSize="200,22" />
+                    </p:If.Then>
+                </p:If>
+            </p:Sequence>
+        </scg:List>
+    </ClipboardData.Data>
+    <ClipboardData.Metadata>
+        <scg:List x:TypeArguments="x:Object" Capacity="4">
+            <scg:List x:TypeArguments="p:FlowNode" Capacity="1">
+                <p:FlowStep>
+                    <WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <av:Point x:Key="ShapeLocation">200,135.5</av:Point>
+                            <av:Size x:Key="ShapeSize">200,49</av:Size>
+                            <av:PointCollection x:Key="ConnectorLocation">300,184.5 300,234.5</av:PointCollection>
+                        </scg:Dictionary>
+                    </WorkflowViewStateService.ViewState>
+                    <x:Reference>__ReferenceID0</x:Reference>
+                </p:FlowStep>
+            </scg:List>
+        </scg:List>
+    </ClipboardData.Metadata>
+</ClipboardData>

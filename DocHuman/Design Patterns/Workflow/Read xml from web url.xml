@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-16"?>
+<!-- 
+    Version:                2.0.2.0 or later
+    Name:                   Read xml from web url
+    Description :           TCMB FX Rates Xml download 
+    Owner       :           Netle
+-->
+<ClipboardData Version="1.0" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:dwa="clr-namespace:DFS.Workflow.Activities;assembly=DFS.Workflow.Designer" xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ClipboardData.Data>
+        <scg:List x:TypeArguments="x:Object" Capacity="1">
+            <dwa:WebClientActivity AuthPassword="{x:Null}" AuthUserName="{x:Null}" Content="{x:Null}" ContentLength="{x:Null}" ContentType="{x:Null}" Encoding="{x:Null}" ProxyAddress="{x:Null}" ProxyAuthPassword="{x:Null}" ProxyAuthUserName="{x:Null}" ProxyPort="{x:Null}" ProxyUseDefaultCredentials="{x:Null}" QueryString="{x:Null}" ResponseHeaders="{x:Null}" SetProxyInfo="{x:Null}" UseDefaultCredentials="{x:Null}" UseDefaultProxy="{x:Null}" x:Name="__ReferenceID0" DisplayName="read FX rate XML from TCMB" VirtualizedContainerService.HintSize="200,49" Method="GET" Result="[Result]" Url="https://www.tcmb.gov.tr/kurlar/today.xml">
+                <WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                </WorkflowViewStateService.ViewState>
+            </dwa:WebClientActivity>
+        </scg:List>
+    </ClipboardData.Data>
+    <ClipboardData.Metadata>
+        <scg:List x:TypeArguments="x:Object" Capacity="4">
+            <scg:List x:TypeArguments="p:FlowNode" Capacity="1">
+                <p:FlowStep>
+                    <WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <av:Point x:Key="ShapeLocation">199.895,237.5</av:Point>
+                            <av:Size x:Key="ShapeSize">200,49</av:Size>
+                        </scg:Dictionary>
+                    </WorkflowViewStateService.ViewState>
+                    <x:Reference>__ReferenceID0</x:Reference>
+                </p:FlowStep>
+            </scg:List>
+        </scg:List>
+    </ClipboardData.Metadata>
+</ClipboardData>

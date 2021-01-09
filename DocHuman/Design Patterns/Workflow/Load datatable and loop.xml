@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-16"?>
+<!-- 
+    Version:                2.0.2.0 or later
+    Name:                   Load datatable and loop
+    Description :           Get record set from database and loop for all rows
+    Owner       :           Netle
+    
+    Imports     :     
+        System.LinQ
+-->
+<ClipboardData Version="1.0" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:dwa="clr-namespace:DFS.Workflow.Activities;assembly=DFS.Workflow.Designer" xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ClipboardData.Data>
+        <scg:List x:TypeArguments="x:Object" Capacity="1">
+            <p:Sequence x:Name="__ReferenceID0" sap2010:Annotation.AnnotationText="Process data table records" DisplayName="while-next-for-records" VirtualizedContainerService.HintSize="200,70">
+                <p:Sequence.Variables>
+                    <p:Variable x:TypeArguments="sd:DataTable" Name="dt01" />
+                </p:Sequence.Variables>
+                <WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    </scg:Dictionary>
+                </WorkflowViewStateService.ViewState>
+                <dwa:LoadTableFromSQL sap2010:Annotation.AnnotationText="Todo : Change &quot;SQL&quot;" ConnectionCode="1" DisplayName="load data table from conn 1" VirtualizedContainerService.HintSize="282,43" Result="[dt01]" SQL="Select Id from DFSUserSet Where Id&lt;100">
+                    <WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                    </WorkflowViewStateService.ViewState>
+                </dwa:LoadTableFromSQL>
+                <p:ForEach x:TypeArguments="sd:DataRow" sap2010:Annotation.AnnotationText="Implement your business for each record" DisplayName="Loop for recrods" VirtualizedContainerService.HintSize="282,227" Values="[dt01.rows.cast(of datarow)]">
+                    <WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                    </WorkflowViewStateService.ViewState>
+                    <p:ActivityAction x:TypeArguments="sd:DataRow">
+                        <p:ActivityAction.Argument>
+                            <p:DelegateInArgument x:TypeArguments="sd:DataRow" Name="dr" />
+                        </p:ActivityAction.Argument>
+                        <dwa:CustomLogMessage Message="{x:Null}" DisplayName="Log active row ID column value" VirtualizedContainerService.HintSize="200,22" MessageType="[System.Diagnostics.TraceLevel.Info]" />
+                    </p:ActivityAction>
+                </p:ForEach>
+            </p:Sequence>
+        </scg:List>
+    </ClipboardData.Data>
+    <ClipboardData.Metadata>
+        <scg:List x:TypeArguments="x:Object" Capacity="4">
+            <scg:List x:TypeArguments="p:FlowNode" Capacity="1">
+                <p:FlowStep>
+                    <WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <av:Point x:Key="ShapeLocation">199.895,336.5</av:Point>
+                            <av:Size x:Key="ShapeSize">200,70</av:Size>
+                        </scg:Dictionary>
+                    </WorkflowViewStateService.ViewState>
+                    <x:Reference>__ReferenceID0</x:Reference>
+                </p:FlowStep>
+            </scg:List>
+        </scg:List>
+    </ClipboardData.Metadata>
+</ClipboardData>

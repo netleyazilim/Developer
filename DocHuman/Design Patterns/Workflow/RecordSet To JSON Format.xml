@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-16"?>
+<!-- 
+    Version:                2.0.2.0 or later
+    Name:                   Record set (Data table) as json format
+    Description :           Get record set from database and convert to JSON string format
+    Owner       :           Netle
+    
+    Arguments   : 
+        Outputs
+            Result          Output          String
+    Variables   :     
+        dtGeneral           System.Data.DataTable    
+-->
+<ClipboardData Metadata="{x:Null}" Version="1.0" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:dwa="clr-namespace:DFS.Workflow.Activities;assembly=DFS.Workflow.Designer" xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ClipboardData.Data>
+        <scg:List x:TypeArguments="x:Object" Capacity="1">
+            <p:Sequence sap2010:Annotation.AnnotationText="info : read from db and conver to JSON format" DisplayName="return recordset as JSON" VirtualizedContainerService.HintSize="264,309">
+                <p:Sequence.Variables>
+                    <p:Variable x:TypeArguments="sd:DataTable" Name="dtGeneral" />
+                </p:Sequence.Variables>
+                <WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    </scg:Dictionary>
+                </WorkflowViewStateService.ViewState>
+                <dwa:LoadTableFromSQL sap2010:Annotation.AnnotationText="todo : Change SQL" ConnectionCode="1" DisplayName="_General" VirtualizedContainerService.HintSize="242,43" Result="[dtGeneral]" SQL="Select top 10 Id, Name from DFSUserSet Order By Id">
+                    <WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                    </WorkflowViewStateService.ViewState>
+                </dwa:LoadTableFromSQL>
+                <p:Assign sap2010:Annotation.AnnotationText="Result variable is declared as string" DisplayName="serialize record set to json string" VirtualizedContainerService.HintSize="242,81">
+                    <p:Assign.To>
+                        <p:OutArgument x:TypeArguments="x:String">[Result]</p:OutArgument>
+                    </p:Assign.To>
+                    <p:Assign.Value>
+                        <p:InArgument x:TypeArguments="x:String">[Newtonsoft.Json.JsonConvert.SerializeObject(dtGeneral, Newtonsoft.Json.Formatting.Indented)]</p:InArgument>
+                    </p:Assign.Value>
+                    <WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                    </WorkflowViewStateService.ViewState>
+                </p:Assign>
+            </p:Sequence>
+        </scg:List>
+    </ClipboardData.Data>
+</ClipboardData>

@@ -1,0 +1,159 @@
+<?xml version="1.0" encoding="utf-16"?>
+<!-- 
+    Version:                2.0.2.0 or later
+    Name:                   sync wf template 01
+    Description :           Form based server side coding with synchronized worklow template
+    Owner       :           Netle
+    Arguments : 
+	    ErrorResult         Output          String
+	    formid              Input           Integer
+	    DFSUser             Input           Integer
+	    userRight           Input           DFS.Form.Bll.FormSecurity
+-->
+<ClipboardData Version="1.0" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:av="http://schemas.microsoft.com/winfx/2006/xaml/presentation" xmlns:dfb="clr-namespace:DFS.Form.Bll;assembly=DFS.Form.Bll" xmlns:dwa="clr-namespace:DFS.Workflow.Activities;assembly=DFS.Workflow.Designer" xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ClipboardData.Data>
+        <scg:List x:TypeArguments="x:Object" Capacity="1">
+            <p:TryCatch x:Name="__ReferenceID3" DisplayName="design.pattern.wf.sync01" VirtualizedContainerService.HintSize="418,278">
+                <WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                </WorkflowViewStateService.ViewState>
+                <p:TryCatch.Try>
+                    <p:Flowchart DisplayName="sync wf business logic" VirtualizedContainerService.HintSize="200,49">
+                        <WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <av:Point x:Key="ShapeLocation">270,2.5</av:Point>
+                                <av:Size x:Key="ShapeSize">60,75</av:Size>
+                                <av:PointCollection x:Key="ConnectorLocation">300,77.5 300,107.5 299.895,107.5 299.895,127.5</av:PointCollection>
+                            </scg:Dictionary>
+                        </WorkflowViewStateService.ViewState>
+                        <p:Flowchart.StartNode>
+                            <x:Reference>__ReferenceID2</x:Reference>
+                        </p:Flowchart.StartNode>
+                        <p:FlowStep x:Name="__ReferenceID2">
+                            <WorkflowViewStateService.ViewState>
+                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                    <av:Point x:Key="ShapeLocation">178.895,127.5</av:Point>
+                                    <av:Size x:Key="ShapeSize">242,60</av:Size>
+                                    <av:PointCollection x:Key="ConnectorLocation">299.895,187.5 299.895,237.5</av:PointCollection>
+                                </scg:Dictionary>
+                            </WorkflowViewStateService.ViewState>
+                            <p:Assign DisplayName="set errorResult" VirtualizedContainerService.HintSize="242,60">
+                                <p:Assign.To>
+                                    <p:OutArgument x:TypeArguments="x:String">[ErrorResult]</p:OutArgument>
+                                </p:Assign.To>
+                                <p:Assign.Value>
+                                    <p:InArgument x:TypeArguments="x:String">
+                                        <p:Literal x:TypeArguments="x:String" Value="" />
+                                    </p:InArgument>
+                                </p:Assign.Value>
+                                <WorkflowViewStateService.ViewState>
+                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                    </scg:Dictionary>
+                                </WorkflowViewStateService.ViewState>
+                            </p:Assign>
+                            <p:FlowStep.Next>
+                                <p:FlowStep x:Name="__ReferenceID0">
+                                    <WorkflowViewStateService.ViewState>
+                                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                            <av:Point x:Key="ShapeLocation">199.895,237.5</av:Point>
+                                            <av:Size x:Key="ShapeSize">200,49</av:Size>
+                                            <av:PointCollection x:Key="ConnectorLocation">299.895,286.5 299.895,336.5</av:PointCollection>
+                                        </scg:Dictionary>
+                                    </WorkflowViewStateService.ViewState>
+                                    <p:Sequence DisplayName="Form and Record Security Check-v1" VirtualizedContainerService.HintSize="200,49">
+                                        <p:Sequence.Variables>
+                                            <p:Variable x:TypeArguments="dfb:FormSecurity" Name="userright" />
+                                        </p:Sequence.Variables>
+                                        <WorkflowViewStateService.ViewState>
+                                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                            </scg:Dictionary>
+                                        </WorkflowViewStateService.ViewState>
+                                        <p:Assign DisplayName="get user right" VirtualizedContainerService.HintSize="464,60">
+                                            <p:Assign.To>
+                                                <p:OutArgument x:TypeArguments="dfb:FormSecurity">[userRight]</p:OutArgument>
+                                            </p:Assign.To>
+                                            <p:Assign.Value>
+                                                <p:InArgument x:TypeArguments="dfb:FormSecurity">[DFS.Form.BLL.UserRightManagement.GetUserFormRights(DFSUser,convert.toint32(formid) )]</p:InArgument>
+                                            </p:Assign.Value>
+                                        </p:Assign>
+                                        <p:If Condition="[userRight.viewright = false or userright.InsertRight = false]" DisplayName="check the form view and insert rights" VirtualizedContainerService.HintSize="464,49">
+                                            <WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                                    <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                                                </scg:Dictionary>
+                                            </WorkflowViewStateService.ViewState>
+                                            <p:If.Then>
+                                                <p:Throw Exception="[new exception(&quot;Kayıt görme ya da yeni kayıt yetkisi tanımsız&quot;)]" VirtualizedContainerService.HintSize="200,22" />
+                                            </p:If.Then>
+                                        </p:If>
+                                        <p:If Condition="[not UserRightManagement.IsAllowedToViewRecord(DFSUser,convert.toint32(formId),Convert.toint32(recordid))]" DisplayName="check row based security" VirtualizedContainerService.HintSize="464,204">
+                                            <p:If.Then>
+                                                <p:Throw Exception="[new exception(&quot;Record permisson error. Record Id :  &quot; + recordId.tostring)]" VirtualizedContainerService.HintSize="200,22" />
+                                            </p:If.Then>
+                                        </p:If>
+                                    </p:Sequence>
+                                    <p:FlowStep.Next>
+                                        <p:FlowStep x:Name="__ReferenceID1">
+                                            <WorkflowViewStateService.ViewState>
+                                                <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                    <av:Point x:Key="ShapeLocation">199.895,336.5</av:Point>
+                                                    <av:Size x:Key="ShapeSize">200,22</av:Size>
+                                                </scg:Dictionary>
+                                            </WorkflowViewStateService.ViewState>
+                                            <dwa:CustomLogMessage Message="{x:Null}" DisplayName="do business logic here!!!" VirtualizedContainerService.HintSize="200,22" MessageType="[System.Diagnostics.TraceLevel.Info]">
+                                                <WorkflowViewStateService.ViewState>
+                                                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                                                    </scg:Dictionary>
+                                                </WorkflowViewStateService.ViewState>
+                                            </dwa:CustomLogMessage>
+                                        </p:FlowStep>
+                                    </p:FlowStep.Next>
+                                </p:FlowStep>
+                            </p:FlowStep.Next>
+                        </p:FlowStep>
+                        <x:Reference>__ReferenceID0</x:Reference>
+                        <x:Reference>__ReferenceID1</x:Reference>
+                    </p:Flowchart>
+                </p:TryCatch.Try>
+                <p:TryCatch.Catches>
+                    <p:Catch x:TypeArguments="s:Exception" VirtualizedContainerService.HintSize="404,20">
+                        <WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                                <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                            </scg:Dictionary>
+                        </WorkflowViewStateService.ViewState>
+                        <p:ActivityAction x:TypeArguments="s:Exception">
+                            <p:ActivityAction.Argument>
+                                <p:DelegateInArgument x:TypeArguments="s:Exception" Name="exception" />
+                            </p:ActivityAction.Argument>
+                            <p:Assign DisplayName="set error result" VirtualizedContainerService.HintSize="242,60">
+                                <p:Assign.To>
+                                    <p:OutArgument x:TypeArguments="x:String">[ErrorResult]</p:OutArgument>
+                                </p:Assign.To>
+                                <p:Assign.Value>
+                                    <p:InArgument x:TypeArguments="x:String">[exception.message]</p:InArgument>
+                                </p:Assign.Value>
+                            </p:Assign>
+                        </p:ActivityAction>
+                    </p:Catch>
+                </p:TryCatch.Catches>
+            </p:TryCatch>
+        </scg:List>
+    </ClipboardData.Data>
+    <ClipboardData.Metadata>
+        <scg:List x:TypeArguments="x:Object" Capacity="4">
+            <scg:List x:TypeArguments="x:Object" Capacity="4">
+                <x:Reference>__ReferenceID3</x:Reference>
+            </scg:List>
+        </scg:List>
+    </ClipboardData.Metadata>
+</ClipboardData>

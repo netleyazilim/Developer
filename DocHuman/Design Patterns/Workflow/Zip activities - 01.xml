@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-16"?>
+<!-- 
+    Version:                2.0.2.0 or later
+    Name:                   Zip activities - 01
+    Description :           Zip/UnZip in memory, archive / extract directory and get entry name from in zip package
+    Owner       :           Netle
+    
+    Imports   :     
+        System
+        System.Collections.Generic
+        DFS.Form.BLL
+-->
+<ClipboardData Metadata="{x:Null}" Version="1.0" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:dfb="clr-namespace:DFS.Form.Bll;assembly=DFS.Form.Bll" xmlns:dwa="clr-namespace:DFS.Workflow.Activities;assembly=DFS.Workflow.Designer" xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ClipboardData.Data>
+        <scg:List x:TypeArguments="x:Object" Capacity="1">
+            <p:Sequence DisplayName="Zip activities - 01" VirtualizedContainerService.HintSize="304,880">
+                <p:Sequence.Variables>
+                    <p:Variable x:TypeArguments="dfb:WFFile" Name="file01" />
+                    <p:Variable x:TypeArguments="s:Byte[]" Name="zipResult" />
+                    <p:Variable x:TypeArguments="s:Byte[]" Name="unZipResult" />
+                    <p:Variable x:TypeArguments="s:String[]" Name="fileNamesInZip" />
+                </p:Sequence.Variables>
+                <WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    </scg:Dictionary>
+                </WorkflowViewStateService.ViewState>
+                <dwa:LoadFile sap2010:Annotation.AnnotationText="todo:&#xD;&#xA;1) edit filename for compress" DisplayName="Load file" FileName="C:\temp\report.csv" VirtualizedContainerService.HintSize="282,56" Result="[file01]">
+                    <WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                    </WorkflowViewStateService.ViewState>
+                </dwa:LoadFile>
+                <dwa:ZipContent sap2010:Annotation.AnnotationText="in memory content zip" Content="[file01.content]" DisplayName="Content archiving | Zip" EntryName="[&quot;Report&quot; &amp; DateTime.Now.Year &amp; &quot;.zip&quot;]" VirtualizedContainerService.HintSize="282,43" Result="[zipResult]">
+                    <WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                    </WorkflowViewStateService.ViewState>
+                </dwa:ZipContent>
+                <dwa:UnZipContent sap2010:Annotation.AnnotationText="in memory extracting zip" Content="[zipResult]" DisplayName="Content extracting | Zip" VirtualizedContainerService.HintSize="282,43" Result="[unZipResult]">
+                    <WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                    </WorkflowViewStateService.ViewState>
+                </dwa:UnZipContent>
+                <dwa:ZipDirectory sap2010:Annotation.AnnotationText="todo:&#xD;&#xA;1) Check path&#xD;&#xA;2) source and dest." ClearFile="True" DestinationArchiveFileName="C:\Netle\DFSAdmin" DisplayName="Directory archiving | Zip" VirtualizedContainerService.HintSize="282,69" SourceDirectoryName="C:\Netle\DFSAdmin_BackUp.zip">
+                    <WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                    </WorkflowViewStateService.ViewState>
+                </dwa:ZipDirectory>
+                <dwa:UnZipDirectory sap2010:Annotation.AnnotationText="todo:&#xD;&#xA;1) check path" ClearFile="True" DestinationDirectory="C:\Netle\DFSAdmin_BackUp.zip" DisplayName="Directory extracting | Zip" VirtualizedContainerService.HintSize="282,56" SourceArchiveFileName="C:\Netle\DFSAdminNewFromZip">
+                    <WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                    </WorkflowViewStateService.ViewState>
+                </dwa:UnZipDirectory>
+                <dwa:ZipEntry sap2010:Annotation.AnnotationText="Load all file names from zip" DisplayName="Entry list | Zip" VirtualizedContainerService.HintSize="282,43" Result="[fileNamesInZip]" SourceArchiveFileName="C:\Netle\DFSAdmin_BackUp.zip">
+                    <WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                    </WorkflowViewStateService.ViewState>
+                </dwa:ZipEntry>
+                <p:ForEach x:TypeArguments="x:String" DisplayName="display file name in zip package" VirtualizedContainerService.HintSize="282,206" Values="[fileNamesInZip]">
+                    <p:ActivityAction x:TypeArguments="x:String">
+                        <p:ActivityAction.Argument>
+                            <p:DelegateInArgument x:TypeArguments="x:String" Name="fileName" />
+                        </p:ActivityAction.Argument>
+                        <dwa:CustomLogMessage DisplayName="file name in zip " VirtualizedContainerService.HintSize="200,22" Message="[fileName]" MessageType="[System.Diagnostics.TraceLevel.Info]" />
+                    </p:ActivityAction>
+                </p:ForEach>
+            </p:Sequence>
+        </scg:List>
+    </ClipboardData.Data>
+</ClipboardData>

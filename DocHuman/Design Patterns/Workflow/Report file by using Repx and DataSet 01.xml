@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-16"?>
+<!-- 
+    Version:                2.0.2.0 or later
+    Name:                   Report file by using Repx and DataSet
+    Description :           Generate report file (like Xlsx, CSV, PDF, Html, etc) by using DfsAdmin designer and in-memory-table
+    Owner       :           Netle
+    
+    Imports   :     
+        System
+        System.Data
+        DFS.Form.BLL
+-->
+<ClipboardData Metadata="{x:Null}" Version="1.0" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:dfb="clr-namespace:DFS.Form.Bll;assembly=DFS.Form.Bll" xmlns:dwa="clr-namespace:DFS.Workflow.Activities;assembly=DFS.Workflow.Designer" xmlns:p="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:sd="clr-namespace:System.Data;assembly=System.Data" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <ClipboardData.Data>
+        <scg:List x:TypeArguments="x:Object" Capacity="1">
+            <p:Sequence sap2010:Annotation.AnnotationText="generate report file by using repx file genearted DFS designer " VirtualizedContainerService.HintSize="222,399">
+                <p:Sequence.Variables>
+                    <p:Variable x:TypeArguments="sd:DataSet" Name="reportDS" />
+                    <p:Variable x:TypeArguments="sd:DataTable" Name="dtUser" />
+                    <p:Variable x:TypeArguments="sd:DataTable" Name="dtLog" />
+                    <p:Variable x:TypeArguments="dfb:WFFile" Name="reportFile" />
+                </p:Sequence.Variables>
+                <WorkflowViewStateService.ViewState>
+                    <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                    </scg:Dictionary>
+                </WorkflowViewStateService.ViewState>
+                <p:Sequence DisplayName="prepare data set for report" VirtualizedContainerService.HintSize="200,49">
+                    <p:Sequence.Variables>
+                        <p:Variable x:TypeArguments="sd:DataRelation" Name="dr01" />
+                    </p:Sequence.Variables>
+                    <WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">False</x:Boolean>
+                            <x:Boolean x:Key="IsPinned">False</x:Boolean>
+                        </scg:Dictionary>
+                    </WorkflowViewStateService.ViewState>
+                    <p:Assign DisplayName="create new data set for reporting" VirtualizedContainerService.HintSize="242,60">
+                        <p:Assign.To>
+                            <p:OutArgument x:TypeArguments="sd:DataSet">[reportDS]</p:OutArgument>
+                        </p:Assign.To>
+                        <p:Assign.Value>
+                            <p:InArgument x:TypeArguments="sd:DataSet">[new DataSet("reportDS")]</p:InArgument>
+                        </p:Assign.Value>
+                    </p:Assign>
+                    <dwa:LoadTableFromSQL ConnectionCode="1" DisplayName="DFSUser --&gt; dtUser" VirtualizedContainerService.HintSize="242,22" Result="[dtUser]" SQL="select top 10 * from dfsuserset" />
+                    <p:Assign DisplayName="change dtuser tableName" VirtualizedContainerService.HintSize="242,60">
+                        <p:Assign.To>
+                            <p:OutArgument x:TypeArguments="x:String">[dtuser.TableName]</p:OutArgument>
+                        </p:Assign.To>
+                        <p:Assign.Value>
+                            <p:InArgument x:TypeArguments="x:String">dtUser</p:InArgument>
+                        </p:Assign.Value>
+                    </p:Assign>
+                    <dwa:LoadTableFromSQL ConnectionCode="1" DisplayName="Log--&gt; dtLog" VirtualizedContainerService.HintSize="242,22" Result="[dtLog]" SQL="select * from DFSLogSet where GroupCode like 'Login'" />
+                    <p:Assign DisplayName="change dtLogtableName" VirtualizedContainerService.HintSize="242,60">
+                        <p:Assign.To>
+                            <p:OutArgument x:TypeArguments="x:String">[dtLog.TableName]</p:OutArgument>
+                        </p:Assign.To>
+                        <p:Assign.Value>
+                            <p:InArgument x:TypeArguments="x:String">dtLog</p:InArgument>
+                        </p:Assign.Value>
+                    </p:Assign>
+                    <p:InvokeMethod DisplayName="dtUser --&gt; reportDS" VirtualizedContainerService.HintSize="242,126" MethodName="Add">
+                        <p:InvokeMethod.TargetObject>
+                            <p:InArgument x:TypeArguments="sd:DataTableCollection">[reportDS.Tables]</p:InArgument>
+                        </p:InvokeMethod.TargetObject>
+                        <p:InArgument x:TypeArguments="sd:DataTable">[dtUser]</p:InArgument>
+                    </p:InvokeMethod>
+                    <p:InvokeMethod DisplayName="dtUser --&gt; reportDS" VirtualizedContainerService.HintSize="242,126" MethodName="Add">
+                        <p:InvokeMethod.TargetObject>
+                            <p:InArgument x:TypeArguments="sd:DataTableCollection">[reportDS.Tables]</p:InArgument>
+                        </p:InvokeMethod.TargetObject>
+                        <p:InArgument x:TypeArguments="sd:DataTable">[dtLog]</p:InArgument>
+                    </p:InvokeMethod>
+                    <p:Assign sap2010:Annotation.AnnotationText="dtUser.Id = dtLog.UserId" DisplayName="make relation (Foreign Key) " VirtualizedContainerService.HintSize="242,81">
+                        <p:Assign.To>
+                            <p:OutArgument x:TypeArguments="sd:DataRelation">[dr01]</p:OutArgument>
+                        </p:Assign.To>
+                        <p:Assign.Value>
+                            <p:InArgument x:TypeArguments="sd:DataRelation">[reportds.Relations.Add("relUserName", reportds.tables("dtUser").Columns("Id"), reportds.tables("dtLog").Columns("UserId"))]</p:InArgument>
+                        </p:Assign.Value>
+                        <WorkflowViewStateService.ViewState>
+                            <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                            </scg:Dictionary>
+                        </WorkflowViewStateService.ViewState>
+                    </p:Assign>
+                    <p:InvokeMethod DisplayName="apply changes in report ds" VirtualizedContainerService.HintSize="242,126" MethodName="AcceptChanges">
+                        <p:InvokeMethod.TargetObject>
+                            <p:InArgument x:TypeArguments="sd:DataSet">[reportds]</p:InArgument>
+                        </p:InvokeMethod.TargetObject>
+                    </p:InvokeMethod>
+                </p:Sequence>
+                <dwa:LoadFile sap2010:Annotation.AnnotationText="todo:&#xD;&#xA;1) check file path and report" DisplayName="load report definition from file" FileName="C:\temp\LongReport.repx" VirtualizedContainerService.HintSize="200,56" Result="[reportFile]">
+                    <WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                    </WorkflowViewStateService.ViewState>
+                </dwa:LoadFile>
+                <dwa:RenderRepXToFile Options="{x:Null}" sap2010:Annotation.AnnotationText="todo:&#xD;&#xA;1)Check 'repxdocument name'" DataSet="[reportDS]" DisplayName="Generate report file | RepX" VirtualizedContainerService.HintSize="200,56" RepXDocument="[reportFile]" RepXFormat="Xls" ReportFileFullPath="C:\Temp\SampleReport.Xlsx">
+                    <WorkflowViewStateService.ViewState>
+                        <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                            <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                        </scg:Dictionary>
+                    </WorkflowViewStateService.ViewState>
+                </dwa:RenderRepXToFile>
+            </p:Sequence>
+        </scg:List>
+    </ClipboardData.Data>
+</ClipboardData>

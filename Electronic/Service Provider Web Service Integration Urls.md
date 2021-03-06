@@ -1,8 +1,9 @@
 # Özel Entegratörlerin Listesi ve Entegrasyon Adresleri
 
 ## Genel Bilgilendirme
-Türkiye'deki GİB sistemine dahil olan ve hizmet veren tüm entegratör çözümleri Netle Yazılım tarafından tasarlanmıştır. Çekirdek (Core) katmanlar ve bunlara bağlı entegrasyonlar için aşağıdaki modüller ve ilgili entegrasyon adreslerine yönelik projeler geliştirilebilir.
-Gelir İdaresi Başkanlığı'na dahil olan özel entegratörlerine https://ebelge.gib.gov.tr/efaturaozelentegratorlerlistesi.html adresinden erişim yapılabilir.
+Türkiye'deki GİB sistemine dahil olan ve hizmet veren tüm entegratör çözümleri Netle Yazılım tarafından tasarlanmıştır. 
+Çekirdek (Core) katmanlar ve bunlara bağlı entegrasyonlar için aşağıdaki modüller ve ilgili entegrasyon adreslerine yönelik projeler geliştirilebilir.
+Gelir İdaresi Başkanlığı'na (GİB) dahil olan özel entegratörlerine https://ebelge.gib.gov.tr/efaturaozelentegratorlerlistesi.html adresinden erişim yapılabilir.
 
 ## Notlar
 - Barındırma ortamı 'Netle' olan sistemler iş ortaklarına özel geliştirme sürecine katkı sağlaması için tasarlanmıştır. Farklı amaçlar için ürün geliştirilmesi önerilmemektedir.
@@ -37,3 +38,7 @@ Gelir İdaresi Başkanlığı'na dahil olan özel entegratörlerine https://ebel
 |Netle|emutabakat (ereconciliation)|PROD|https://emutabakat.netle.com.tr/CommonWebService/Reconciliation10.asmx
 |Netle|emutabakat (ereconciliation)|TEST|https://payment.netle.com.tr/CommonInvoice.Web.Service/reconciliation10.asmx
 |Netle|KSG|TEST|https://payment.netle.com.tr/KSG.Web.Service/KSGIntegration10.asmx
+|SoftNet|e-invoice|PROD|https://ws.softnet.com.tr/entegrasyon10/efaturaentegrasyonu.asmx
+|SoftNet|e-archive|PROD|https://ws.softnet.com.tr/EArcWebService/EArcIntegration10.asmx
+|SoftNet|(CommonWS) e-invoice, e-archive, e-dispatch, e-ticket, e-smm, e-mm|PROD|https://ws.softnet.com.tr/CommonInvoice.Web.Service/Integration10.asmx
+|SoftNet|e-ledger|PROD|https://ws.softnet.com.tr/EledgerIntegration/Integration10.asmx

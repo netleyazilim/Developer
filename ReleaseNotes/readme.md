@@ -78,6 +78,7 @@ Yıllara göre istatistikler
 
 |Yıl|Toplam Yenilik Sayısı|Toplam İyileştirme Sayısı|Toplam Hata Giderme Sayısı|Toplam
 |---|---|---|---|---|
+|2021|21|65|12|98
 |2020|28|54|7|89
 |2019|20|32|9|61
 |2018|36|37|10|83

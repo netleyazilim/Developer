@@ -56,6 +56,7 @@ Tek bir katman ile güncellemesiyle birlikte tüm kurumlarda, ülkelerde ya da p
 
 |Yıl|Detay Bağlantı Adresi|
 |---|---|
+|2021|[Detay Liste](2021/readme.md)|
 |2020|[Detay Liste](2020/readme.md)|
 |2019|[Detay Liste](2019/readme.md)|
 |2018|[Detay Liste](2018/readme.md)|

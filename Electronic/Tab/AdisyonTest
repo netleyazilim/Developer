@@ -29,9 +29,9 @@ namespace MPIP.CommonServis.TestClient
                 client.Url = "http://localhost:51257/CommonInvoice.Web.Service/Integration10.asmx";
 
                 // Modül tipi olarak eTab kullanılması önemlidir 
-                var adisyonToken = client.CreateUserToken(@"ahmet.alp", "eTabTest123", ModuleType.eTab);
+                var adisyonToken = client.CreateUserToken(@"username", "password", ModuleType.eTab);
 
-                /// smmNEF, NetleEFatura tipinde oluşturulmuş serbest meslek makbuzu belgesidir                 
+                /// adisyonNEF, NetleEFatura tipinde oluşturulmuş adisyon belgesidir                 
                 /// documentUUID değeri, o belgeye has tekil bir değer olacaktır ve gelecek sorgulamalarda kullanılacaktır, kullanıcı tarafından oluşturulup verilir                
                 /// prefix değeri, belgenin numarasıyla ilgilidir, şu aşamada boş bırakılmalıdır 
                 var uuid = Guid.NewGuid();
@@ -1064,7 +1064,7 @@ namespace MPIP.CommonServis.TestClient
         {
             var nef = new NetleEFatura();
             nef.GUID = Guid.NewGuid().ToString();
-            ///  Belge numarası, özel bir yapıdadır, ilk 3 karakter fatura serisi(Burada seri SMM olarak belirlendi), 
+            ///  Belge numarası, özel bir yapıdadır, ilk 3 karakter fatura serisi(Burada seri ADS olarak belirlendi), 
             /// sonraki dört karakter yıl (2018) sonraki 9 karakter, müteselsil şekilde devam eden numara olmalıdır. 
             /// Fatura numarası ve fatura tarihi birbiriyle sıralı olmalıdır.              
             nef.DuzenlenmeTarihi = DateTime.Now; // Belge düzenlenme zamanı             
@@ -1161,7 +1161,7 @@ namespace MPIP.CommonServis.TestClient
             nef.VergilerDahilTutar = 1890;
             nef.KaynakDokumanTuru = KaynakDokumanTuru.EADISYON;
 
-            /// SMM belgeleri alıcıya iki şekilde gönderilir, kağıt çıktısı alınarak ya da elektonik yolla e-posta gönderilerek. 
+            /// Belgeler alıcıya iki şekilde gönderilir, kağıt çıktısı alınarak ya da elektonik yolla e-posta gönderilerek. 
             /// Bu gönderim tipi belgede belirtilmelidir çünkü bu bilgi entegratör tarafından ay sonunda oluşturulup 
             /// GIB'e gönderilecek raporda doğru biçimde bildirilmelidir.
             nef.GonderimTipi = GonderimTipi.KAGIT;

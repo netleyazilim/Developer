@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<CreditNote xmlns="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2"
+	xmlns:cac="urn:oasis:names:specification:ubl:schema:xsd:CommonAggregateComponents-2"
+	xmlns:cbc="urn:oasis:names:specification:ubl:schema:xsd:CommonBasicComponents-2"
+	xmlns:ds="http://www.w3.org/2000/09/xmldsig#"
+	xmlns:ext="urn:oasis:names:specification:ubl:schema:xsd:CommonExtensionComponents-2"
+	xmlns:ns8="urn:oasis:names:specification:ubl:schema:xsd:ApplicationResponse-2"
+	xmlns:xades="http://uri.etsi.org/01903/v1.3.2#"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="urn:oasis:names:specification:ubl:schema:xsd:CreditNote-2 file:/C:/Netle/UBLTR_1.2.1_Paketi/xsdrt/maindoc/UBL-CreditNote-2.1.xsd">  
+	<cbc:UBLVersionID>2.1</cbc:UBLVersionID>
+	<cbc:CustomizationID>TR1.2.1</cbc:CustomizationID>
+	<cbc:ProfileID>EARSIVBELGE</cbc:ProfileID>
+	<cbc:ID>ADS2022000000315</cbc:ID>
+	<cbc:CopyIndicator>false</cbc:CopyIndicator>
+	<cbc:UUID>f13baf85-0d83-419f-9482-3e0da8e0ac3b</cbc:UUID>
+	<cbc:IssueDate>2022-02-06</cbc:IssueDate>
+	<cbc:IssueTime>02:34:41</cbc:IssueTime>
+	<cbc:CreditNoteTypeCode>ADISYON</cbc:CreditNoteTypeCode>
+	<cbc:Note>Yalnız : DörtBinYüz TL</cbc:Note>
+	<cbc:DocumentCurrencyCode>TRY</cbc:DocumentCurrencyCode>
+	<cac:AccountingSupplierParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="TCKN">98745612309</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Adisyonİsim AdisyonSoyisim</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>Test adres 03</cbc:StreetName>
+				<cbc:CitySubdivisionName>test</cbc:CitySubdivisionName>
+				<cbc:CityName>test</cbc:CityName>
+				<cac:Country>
+					<cbc:Name>TR</cbc:Name>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyTaxScheme>
+				<cac:TaxScheme>
+					<cbc:Name>Test</cbc:Name>
+				</cac:TaxScheme>
+			</cac:PartyTaxScheme>
+			<cac:Person>
+				<cbc:FirstName>Adisyonİsim</cbc:FirstName>
+				<cbc:FamilyName>AdisyonSoyisim</cbc:FamilyName>
+			</cac:Person>
+		</cac:Party>
+	</cac:AccountingSupplierParty>
+	<cac:AccountingCustomerParty>
+		<cac:Party>
+			<cac:PartyIdentification>
+				<cbc:ID schemeID="TCKN">20231264774</cbc:ID>
+			</cac:PartyIdentification>
+			<cac:PartyName>
+				<cbc:Name>Musteriİsim MusteriSoyisim</cbc:Name>
+			</cac:PartyName>
+			<cac:PostalAddress>
+				<cbc:StreetName>Test</cbc:StreetName>
+				<cbc:CitySubdivisionName>Test</cbc:CitySubdivisionName>
+				<cbc:CityName>İzmir</cbc:CityName>
+				<cac:Country>
+					<cbc:Name>TR</cbc:Name>
+				</cac:Country>
+			</cac:PostalAddress>
+			<cac:PartyTaxScheme>
+				<cac:TaxScheme>
+					<cbc:Name>Test</cbc:Name>
+				</cac:TaxScheme>
+			</cac:PartyTaxScheme>
+			<cac:PartyLegalEntity>
+				<cbc:RegistrationName>Musteriİsim MusteriSoyisim</cbc:RegistrationName>
+				<cbc:CompanyID>20231264774</cbc:CompanyID>
+			</cac:PartyLegalEntity>
+			<cac:Person>
+				<cbc:FirstName>Musteriİsim</cbc:FirstName>
+				<cbc:FamilyName>MusteriSoyisim</cbc:FamilyName>
+			</cac:Person>
+		</cac:Party>
+	</cac:AccountingCustomerParty>
+	<cac:TaxTotal>
+		<cbc:TaxAmount currencyID="TRY">1071.82</cbc:TaxAmount>
+		<cac:TaxSubtotal>
+			<cbc:TaxableAmount currencyID="TRY">1750</cbc:TaxableAmount>
+			<cbc:TaxAmount currencyID="TRY">140</cbc:TaxAmount>
+			<cbc:Percent>8</cbc:Percent>
+			<cac:TaxCategory>
+				<cac:TaxScheme>
+					<cbc:Name>GERÇEK USULDE KATMA DEĞER VERGİSİ</cbc:Name>
+					<cbc:TaxTypeCode>0015</cbc:TaxTypeCode>
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+		<cac:TaxSubtotal>
+			<cbc:TaxableAmount currencyID="TRY">4659.1</cbc:TaxableAmount>
+			<cbc:TaxAmount currencyID="TRY">931.82</cbc:TaxAmount>
+			<cbc:Percent>20</cbc:Percent>
+			<cac:TaxCategory>
+				<cac:TaxScheme>
+					<cbc:Name>GELİR VERGİSİ STOPAJI</cbc:Name>
+					<cbc:TaxTypeCode>0003</cbc:TaxTypeCode>
+				</cac:TaxScheme>
+			</cac:TaxCategory>
+		</cac:TaxSubtotal>
+	</cac:TaxTotal>
+	<cac:LegalMonetaryTotal>
+		<cbc:LineExtensionAmount currencyID="TRY">1750</cbc:LineExtensionAmount>
+		<cbc:TaxExclusiveAmount currencyID="TRY">1750</cbc:TaxExclusiveAmount>
+		<cbc:TaxInclusiveAmount currencyID="TRY">1890</cbc:TaxInclusiveAmount>
+		<cbc:PayableRoundingAmount currencyID="TRY">931.82</cbc:PayableRoundingAmount>
+		<cbc:PayableAmount currencyID="TRY">1890</cbc:PayableAmount>
+	</cac:LegalMonetaryTotal>
+	<cac:CreditNoteLine>
+		<cbc:ID>1</cbc:ID>
+		<cbc:CreditedQuantity unitCode="C62">0</cbc:CreditedQuantity>
+		<cbc:LineExtensionAmount currencyID="TRY">1750</cbc:LineExtensionAmount>
+		<cac:TaxTotal>
+			<cbc:TaxAmount currencyID="TRY">140</cbc:TaxAmount>
+			<cac:TaxSubtotal>
+				<cbc:TaxableAmount currencyID="TRY">1750</cbc:TaxableAmount>
+				<cbc:TaxAmount currencyID="TRY">140</cbc:TaxAmount>
+				<cbc:Percent>8</cbc:Percent>
+				<cac:TaxCategory>
+					<cac:TaxScheme>
+						<cbc:Name>GERÇEK USULDE KATMA DEĞER VERGİSİ</cbc:Name>
+						<cbc:TaxTypeCode>0015</cbc:TaxTypeCode>
+					</cac:TaxScheme>
+				</cac:TaxCategory>
+			</cac:TaxSubtotal>
+		</cac:TaxTotal>
+		<cac:Item>
+			<cbc:Name>Deneme</cbc:Name>
+		</cac:Item>
+		<cac:Price>
+			<cbc:PriceAmount currencyID="TRY">350</cbc:PriceAmount>
+		</cac:Price>
+	</cac:CreditNoteLine>
+</CreditNote>

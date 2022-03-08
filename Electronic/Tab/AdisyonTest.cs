@@ -6,7 +6,7 @@ using System.IO;
 namespace MPIP.CommonServis.TestClient
 {
     /// <summary>
-    /// Elektronic Serbest Meslek Makbuzu (e-smm) web servis entegrasyonu için örnek ve test kodlarını içermektedir.
+    /// Elektronic Adisyon (e-check) web servis entegrasyonu için örnek ve test kodlarını içermektedir.
     /// <remarks>Bu tasarım desenleri ya da kodlar sadece "Netle Yazılım" tarafında sağlanan çözümlerde kullanılabilir.</remarks>
     /// </summary>
     public static class AdisyonTest
@@ -29,7 +29,7 @@ namespace MPIP.CommonServis.TestClient
                 client.Url = "http://localhost:51257/CommonInvoice.Web.Service/Integration10.asmx";
 
                 // Modül tipi olarak eTab kullanılması önemlidir 
-                var adisyonToken = client.CreateUserToken(@"username", "password", ModuleType.eTab);
+                var adisyonToken = client.CreateUserToken(@"ahmet.alp", "eTabTest123", ModuleType.eTab);
 
                 /// adisyonNEF, NetleEFatura tipinde oluşturulmuş adisyon belgesidir                 
                 /// documentUUID değeri, o belgeye has tekil bir değer olacaktır ve gelecek sorgulamalarda kullanılacaktır, kullanıcı tarafından oluşturulup verilir                
@@ -120,7 +120,7 @@ namespace MPIP.CommonServis.TestClient
                 {
                     DFS.Common.Entity.EkSaha es = new DFS.Common.Entity.EkSaha();
                     es.Anahtar = s.Anahtar;
-                    es.Deger = es.Deger;
+                    es.Deger = s.Deger;
                     ekSahaList.Add(es);
                 }
                 retVal = ekSahaList.ToArray();
@@ -246,6 +246,8 @@ namespace MPIP.CommonServis.TestClient
                 r.TicaretSicilNo = t.TicaretSicilNo;
                 r.Ulke = t.Ulke;
                 r.UreticiNo = t.UreticiNo;
+                r.MasaNo = t.MasaNo;
+                r.Kullanici = t.Kullanici;
                 r.VergiDairesi = t.VergiDairesi;
                 r.VergiNoTCKimlikNo = t.VergiNoTCKimlikNo;
                 r.VergiTipiKodu = t.VergiTipiKodu;
@@ -1075,6 +1077,36 @@ namespace MPIP.CommonServis.TestClient
             // Bu şekilde sabit olmalıdır. 
             nef.Senaryo = NetleEFaturaSenaryoType.EARSIVBELGE;
 
+            List<EkSaha> ekSahaList = new List<EkSaha>();
+            string attachmentIdKey = DFS.Common.Entity.AdditionalDocumentConstants.NEF_ATTACHMENT_ID_KEY + ".001";
+            string issueDateKey = DFS.Common.Entity.AdditionalDocumentConstants.NEF_ATTACHMENT_ISSUEDATE_KEY + ".001";
+            string descKey = DFS.Common.Entity.AdditionalDocumentConstants.NEF_ATTACHMENT_DESCRIPTION_KEY + ".001";
+            string schemeIdKey = DFS.Common.Entity.AdditionalDocumentConstants.NEF_SCHEMEID_KEY + ".001";
+            string validityStartDateKey = DFS.Common.Entity.AdditionalDocumentConstants.NEF_VALIDITYPERIOD_STARTDATE_KEY + ".001";
+            string validityEndDateKey = DFS.Common.Entity.AdditionalDocumentConstants.NEF_VALIDITYPERIOD_ENDDATE_KEY + ".001";
+            string validityStartTimeKey = DFS.Common.Entity.AdditionalDocumentConstants.NEF_VALIDITYPERIOD_STARTTIME_KEY + ".001";
+            string validityEndTimeKey = DFS.Common.Entity.AdditionalDocumentConstants.NEF_VALIDITYPERIOD_ENDTIME_KEY + ".001";
+            string attachmentIdKey2 = DFS.Common.Entity.AdditionalDocumentConstants.NEF_ATTACHMENT_ID_KEY + ".002";
+            string issueDateKey2 = DFS.Common.Entity.AdditionalDocumentConstants.NEF_ATTACHMENT_ISSUEDATE_KEY + ".002";
+            string descKey2 = DFS.Common.Entity.AdditionalDocumentConstants.NEF_ATTACHMENT_DESCRIPTION_KEY + ".002";
+            string schemeIdKey2 = DFS.Common.Entity.AdditionalDocumentConstants.NEF_SCHEMEID_KEY + ".002";
+
+            ekSahaList.Add(new EkSaha() { Anahtar = DFS.Common.Entity.AdditionalDocumentConstants.NEF_ATTACHMENT_COUNT_KEY, Deger = "2" });
+            ekSahaList.Add(new EkSaha() { Anahtar = attachmentIdKey, Deger = nef.GUID });
+            ekSahaList.Add(new EkSaha() { Anahtar = schemeIdKey, Deger = "ADISYON_SESSION" });
+            ekSahaList.Add(new EkSaha() { Anahtar = validityStartDateKey, Deger = "2022-03-07" });
+            ekSahaList.Add(new EkSaha() { Anahtar = validityEndDateKey, Deger = "2022-03-08" });
+            ekSahaList.Add(new EkSaha() { Anahtar = validityStartTimeKey, Deger = "23:30:00.000" });
+            ekSahaList.Add(new EkSaha() { Anahtar = validityEndTimeKey, Deger = "00:30:00.000" });
+            ekSahaList.Add(new EkSaha() { Anahtar = descKey, Deger = "ADISYON" });
+            ekSahaList.Add(new EkSaha() { Anahtar = issueDateKey, Deger = "2022-03-07" });
+            ekSahaList.Add(new EkSaha() { Anahtar = attachmentIdKey2, Deger = nef.GUID });
+            ekSahaList.Add(new EkSaha() { Anahtar = schemeIdKey2, Deger = "OKC_SERI_NO" });
+            ekSahaList.Add(new EkSaha() { Anahtar = descKey2, Deger = "SATIS_FISI" });
+            ekSahaList.Add(new EkSaha() { Anahtar = issueDateKey2, Deger = "2022-03-07" });
+
+            nef.EkSahalar = ekSahaList.ToArray();
+
             // Belgeyi kesen kişi / firmanın bilgileri. Belge bir şahıs tarafından kesiliyorsa Sahis bölümü doldurulmalıdır.  
             nef.Tedarikci = new Tedarikci
             {
@@ -1103,6 +1135,22 @@ namespace MPIP.CommonServis.TestClient
                 VergiNoTCKimlikNo = "20231264774",
                 Ulke = "TR",
                 VergiDairesi = "Test"
+            };
+
+            nef.SaticiTedarikcisi = new SaticiTedarikcisi
+            {
+                FirmaAdi = "Satici Tedarikcisi Firma Adi",
+                Il = "test il",
+                IlceSemt = "test semt",
+                Sokak = "Test sokak 04",
+                Sahis = new Sahis { Ad = "Adisyonİsim", Soyad = "AdisyonSoyisim" },
+                /// Belgeyi kesen firmanın vergi kimlik numarası ya da şahsın tc kimlik no'su. 
+                /// Burada verilen değer, test hesabınıza tanımlı tckn değeridir, değiştirmeniz halinde sistemden hata alırsınız 
+                VergiNoTCKimlikNo = "98745612309",
+                Ulke = "TR",
+                VergiDairesi = "Test Vergi Dairesi",
+                MasaNo = "B11",
+                Kullanici = "Kullanici 1"
             };
 
             // Faturanın kalemleri bu listeye atılacak, sonrasında nef nesnesinin FaturaKalemleri elemanı bu listenin array'e çevrilmesiyle elde edilecek 
